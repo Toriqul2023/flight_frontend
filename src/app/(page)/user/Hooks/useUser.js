@@ -16,7 +16,7 @@ export default function useUsers() {
       .catch(err => {
         setError(err);
       });
-  }, []);
+  }, [users]);
 
   return { users, setUsers, loading, error };
 }
