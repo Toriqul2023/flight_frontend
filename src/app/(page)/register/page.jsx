@@ -15,7 +15,8 @@ export default function page() {
   const onSubmit = async (data) => {
     try {
         console.log(data)
-      const response = await fetch('/api/register', {
+      const response = await fetch('http://localhost:9090/user', {
+        
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
