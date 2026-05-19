@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -10,7 +11,7 @@ export default function page() {
     watch,
   } = useForm();
 
-
+const router=useRouter()
 
   const onSubmit = async (data) => {
     try {
@@ -21,12 +22,15 @@ export default function page() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
+      const post=await response.json()
+      console.log(post)
 
       if (response.ok) {
+        localStorage.setItem("name",post?.name)
+        localStorage.getItem("email",post?.email)
         alert('Registration successful!');
-      } else {
-        alert('Something went wrong.');
-      }
+        router.push("/dashboard");
+      } 
     } catch (error) {
       console.error(error);
       alert('Failed to submit form.');
