@@ -27,7 +27,7 @@ const router=useRouter()
 
       if (response.ok) {
         localStorage.setItem("name",post?.name)
-        localStorage.getItem("email",post?.email)
+        localStorage.setItem("email",post?.email)
         alert('Registration successful!');
         router.push("/dashboard");
       } 
