@@ -16,18 +16,23 @@ const router=useRouter()
   const onSubmit = async (data) => {
     try {
         console.log(data)
-      const response = await fetch('http://localhost:9090/user', {
+      const response = await fetch('https://testerflight-4.onrender.com/user', {
         
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
       const post=await response.json()
-      console.log(post)
-
-      if (response.ok) {
+      console.log(response)
+      if(response.status==201){
+        alert("ALready have an account")
+        router.push("/login")
+      }
+      else if (response.ok) {
+        localStorage.setItem("id",post?.id);
         localStorage.setItem("name",post?.name)
         localStorage.setItem("email",post?.email)
+        
         alert('Registration successful!');
         router.push("/dashboard");
       } 

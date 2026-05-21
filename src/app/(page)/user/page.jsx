@@ -42,7 +42,7 @@ const handleSubmit = async (e) => {
   }
 
   try {
-    const res = await axios.post("http://localhost:9090/user", formData);
+    const res = await axios.post("https://testerflight-4.onrender.com/user", formData);
     console.log(res.data)
 
     setUsers([...users, res.data]);
