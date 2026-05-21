@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation'; // নেভিগেশনের জন্য useRouter ইমপোর্ট করা হলো
 
 const Page = () => {
-  const router = useRouter(); // router ইনিশিয়ালাইজেশন
+  const router = useRouter(); // router ইনিশিয়ালাইজেশন
 
   const [user, setUser] = useState({
     id: "",
@@ -25,7 +25,7 @@ const Page = () => {
     const name = localStorage.getItem("name");
     const email = localStorage.getItem("email");
 
-    // 🔒 রুট প্রোটেকশন চেক: ডাটা না থাকলে সরাসরি লগইন পেজে পাঠিয়ে দেবে
+    // 🔒 রুট প্রোটেকশন চেক: ডাটা না থাকলে সরাসরি লগইন পেজে পাঠিয়ে দেবে
     if (!id || !name || !email) {
       alert("Please login first to access the dashboard!");
       router.push("/login"); // আপনার লগইন পেজের রাউট পাথ এখানে দিন
@@ -95,7 +95,7 @@ const Page = () => {
     }
   };
 
-  // রিডাইরেক্ট হওয়া বা ডাটা ফেচিং ট্র্যাকিং এর সময় আনঅথরাইজড কন্টেন্ট ফ্ল্যাকার রোধে লোডিং স্ক্রিন
+  // রিডাইরেক্ট হওয়া বা ডাটা ফেচিং ট্র্যাকিং এর সময় আনঅথরাইজড কন্টেন্ট ফ্ল্যাকার রোধে লোডিং স্ক্রিন
   if (loading && !user.id) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
@@ -128,8 +128,19 @@ const Page = () => {
             </div>
           </div>
 
-          {/* User Status & Logout Button Container */}
+          {/* User Status, My Bookings & Logout Button Container */}
           <div className="flex items-center gap-4">
+            {/* My Bookings Nav Button */}
+            <button
+              onClick={() => router.push('/bookings')} // আপনার বুকিং লিস্ট পেজের রাউট পাথ অনুযায়ী পরিবর্তন করতে পারেন
+              className="bg-indigo-600/20 hover:bg-indigo-600/40 border border-indigo-500/30 px-4 py-2.5 rounded-xl text-indigo-300 hover:text-white font-bold text-sm transition-all duration-200 flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              My Bookings
+            </button>
+
             <div className="bg-white/5 border border-white/10 px-5 py-2.5 rounded-2xl backdrop-blur-md shadow-inner text-right hidden sm:block">
               <h2 className="font-bold text-slate-100 text-sm md:text-base flex items-center justify-end gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-ping"></span>
