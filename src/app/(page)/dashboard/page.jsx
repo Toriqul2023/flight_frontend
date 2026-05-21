@@ -137,7 +137,7 @@ const Page = () => {
             
             {/* My Bookings Button - Full width on small mobile, auto on desktop */}
             <button
-              onClick={() => router.push('/bookings')}
+              onClick={() => router.push('/booking')}
               className="flex-1 md:flex-none justify-center bg-indigo-600/20 hover:bg-indigo-600/40 border border-indigo-500/30 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-indigo-300 hover:text-white font-bold text-xs sm:text-sm transition-all duration-200 flex items-center gap-2"
             >
               <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
