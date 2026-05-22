@@ -16,7 +16,7 @@ const router=useRouter()
   const onSubmit = async (data) => {
     try {
         console.log(data)
-      const response = await fetch('https://testerflight-4.onrender.com/user', {
+      const response = await fetch('http://localhost:9090/user', {
         
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -41,11 +41,11 @@ const BookingListPage = () => {
     const fetchData = async () => {
       try {
         // সব ফ্লাইটের ডাটা নিয়ে আসা (ম্যাচিং করার জন্য)
-        const flightRes = await axios.get("https://testerflight-4.onrender.com/flight");
+        const flightRes = await axios.get("http://localhost:9090/flight");
         setFlights(flightRes.data);
 
         // সব বুকিং নিয়ে আসা
-        const bookingRes = await axios.get("https://testerflight-4.onrender.com/booking");
+        const bookingRes = await axios.get("http://localhost:9090/booking");
         
         // শুধুমাত্র বর্তমান লগইন থাকা ইউজারের বুকিংগুলো ফিল্টার করা
         const userBookings = bookingRes.data.filter(

@@ -37,7 +37,7 @@ const Page = () => {
       email: email
     });
 
-    axios.get("https://testerflight-4.onrender.com/flight")
+    axios.get("http://localhost:9090/flight")
       .then(res => {
         setFlights(res.data);
         setLoading(false);
@@ -76,7 +76,7 @@ const Page = () => {
       };
 
       const res = await axios.post(
-        "https://testerflight-4.onrender.com/booking",
+        "http://localhost:9090/booking",
         bookingData
       );
 
