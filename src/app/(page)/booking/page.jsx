@@ -49,7 +49,7 @@ const BookingListPage = () => {
         
         // শুধুমাত্র বর্তমান লগইন থাকা ইউজারের বুকিংগুলো ফিল্টার করা
         const userBookings = bookingRes.data.filter(
-          (b) => String(b.userId) === String(currentUser.id)
+          (b) => b?.userId === currentUser?.id
         );
         setBookings(userBookings);
 
