@@ -18,15 +18,15 @@ const BookingListPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 1. LocalStorage থেকে ইউজার ডাটা নেওয়া
+   
     const id = localStorage.getItem("id");
     const name = localStorage.getItem("name");
     const email = localStorage.getItem("email");
 
-    // যদি কোনো ডাটা না থাকে, তারমানে ইউজার লগইন করা নেই। তাকে রিডাইরেক্ট করা হবে।
+   
     if (!id || !name || !email) {
       alert("Please login first to access this page!");
-      router.push("/login"); // আপনার লগইন পেজের রাউটে নিয়ে যাবে
+      router.push("/login"); 
       return;
     }
 
@@ -37,21 +37,17 @@ const BookingListPage = () => {
     };
     setUser(currentUser);
 
-    // 2. ডেটা ফেচিং (ফ্লাইট এবং বুকিং লিস্ট)
+  
     const fetchData = async () => {
       try {
-        // সব ফ্লাইটের ডাটা নিয়ে আসা (ম্যাচিং করার জন্য)
-        const flightRes = await axios.get("http://localhost:9090/flight");
-        setFlights(flightRes.data);
-
-        // সব বুকিং নিয়ে আসা
-        const bookingRes = await axios.get("http://localhost:9090/booking");
+      
+     const [bookingsRes, flightsRes] = await Promise.all([
+        axios.get(`http://localhost:9090/booking?userId=${id}`), 
+        axios.get("http://localhost:9090/flight")
+      ]);
         
-        // শুধুমাত্র বর্তমান লগইন থাকা ইউজারের বুকিংগুলো ফিল্টার করা
-        const userBookings = bookingRes.data.filter(
-          (b) => b?.userId === currentUser?.id
-        );
-        setBookings(userBookings);
+     setBookings(bookingsRes.data);
+     setFlights(flightsRes.data);
 
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -63,21 +59,21 @@ const BookingListPage = () => {
     fetchData();
   }, [router]);
 
-  // লগআউট হ্যান্ডেল করার ফাংশন
+  
   const handleLogout = () => {
     localStorage.removeItem("id");
     localStorage.removeItem("name");
     localStorage.removeItem("email");
     alert("Logged out successfully!");
-    router.push("/login"); // লগআউট শেষে লগইন পেজে ট্রান্সফার
+    router.push("/login"); 
   };
 
-  // বুকিং আইটেমের সাথে ফ্লাইটের বিস্তারিত তথ্য মেলানোর হেল্পার ফাংশন
+  
   const getFlightDetails = (flightId) => {
-    return flights.find((f) => String(f.id) === String(flightId)) || {};
+    return flights.find((f) => f.id === flightId) || {};
   };
 
-  // লগইন ছাড়া রিডাইরেক্ট হওয়ার আগ পর্যন্ত বা ডাটা লোড হওয়ার সময় ব্ল্যাঙ্ক স্ক্রিন এড়ানো
+  
   if (loading && !user.id) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
