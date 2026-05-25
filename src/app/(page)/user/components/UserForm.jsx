@@ -6,6 +6,7 @@ export default function UserForm({ formData, handleChange, handleSubmit }) {
     >
       <input name="name" value={formData.name} onChange={handleChange} placeholder="Name" className="border p-2 rounded" />
       <input name="email" value={formData.email} onChange={handleChange} placeholder="Email" className="border p-2 rounded" />
+      <input name="password" value={formData.password} onChange={handleChange} placeholder="Password" className="border p-2 rounded" />
       <input name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone" className="border p-2 rounded" />
       <input name="age" value={formData.age} onChange={handleChange} placeholder="Age" type="number" className="border p-2 rounded" />
 

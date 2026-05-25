@@ -1,6 +1,6 @@
 export default function UserCard({ data }) {
   return (
-    <div className="bg-white border rounded-2xl p-5 shadow-sm hover:shadow-xl transition">
+    <div key={data.id} className="bg-white border rounded-2xl p-5 shadow-sm hover:shadow-xl transition">
 
       <div className="flex items-center gap-4 mb-4">
         <div className="w-14 h-14 rounded-full bg-gray-800 text-white flex items-center justify-center font-bold">
