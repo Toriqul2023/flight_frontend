@@ -7,7 +7,7 @@ export default function Flights() {
   const [flights, setFlights] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:9090/flight")
+    axios.get("https://testerflight-4.onrender.com/flight")
       .then(res => setFlights(res.data))
       .catch(err => console.log(err));
   }, []);

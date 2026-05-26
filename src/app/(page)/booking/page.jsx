@@ -42,8 +42,8 @@ const BookingListPage = () => {
       try {
       
      const [bookingsRes, flightsRes] = await Promise.all([
-        axios.get(`http://localhost:9090/booking?userId=${id}`), 
-        axios.get("http://localhost:9090/flight")
+        axios.get(`https://testerflight-4.onrender.com/booking?userId=${id}`), 
+        axios.get("https://testerflight-4.onrender.com/flight")
       ]);
         
      setBookings(bookingsRes.data);

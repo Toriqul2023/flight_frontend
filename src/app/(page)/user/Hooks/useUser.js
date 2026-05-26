@@ -8,7 +8,7 @@ export default function useUsers() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:9090/user")
+    axios.get("https://testerflight-4.onrender.com/user")
       .then(res => {
         setUsers(res.data);
         setLoading(false);
