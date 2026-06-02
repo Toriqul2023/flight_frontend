@@ -109,7 +109,7 @@ const router=useRouter()
                 type="number"
                 {...register("age", {  required: "Age is required" })}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder="22"
+                placeholder=""
               />
               {errors.age && <p className="mt-1 text-xs text-red-600">{errors.age.message}</p>}
             </div>
@@ -119,7 +119,7 @@ const router=useRouter()
                 type="text"
                 {...register("phone", {  required: "Phone number is required" })}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder="01718850163"
+                placeholder="0171"
               />
               {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone.message}</p>}
             </div>
